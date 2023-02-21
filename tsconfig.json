@@ -11,6 +11,7 @@
       "esModuleInterop": true,  // 支持在 CommonJs 模块下使用 import d from 'cjs', 解决TypeScript 对于 CommonJs/AMD/UMD 模块与 ES6 模块处理方式相同导致的问题。允许 “export =” 导出，既可以通过 “import from” 导入，也可以通过 “import =” 的方式导入
       "strict": true, // 开启严格模式
       "skipLibCheck": true, // 忽略所有的声明文件（ *.d.ts）的类型检查。
+      "noEmit": true,
       "paths": {
         "@/*": ["src/*"]
       }

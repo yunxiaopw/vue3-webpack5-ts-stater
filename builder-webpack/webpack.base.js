@@ -1,27 +1,15 @@
-import * as webpack from "webpack";
-import * as path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import { VueLoaderPlugin } from "vue-loader";
-import "webpack-dev-server";
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
-const baseConfig: webpack.Configuration = {
-  mode: "development",
+module.exports = {
   entry: path.resolve(__dirname, "../src/index.ts"),
-  output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "../dist"),
-  },
-  devServer: {
-    hot: true,
-    open: true,
-    port: "9527",
-  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src"),
     },
-    extensions: [".ts", ".vue", ".js", ".json"], // 使用 resolve.extensions 声明自动解析 .ts 后缀文件，这意味着代码如 import "./a.ts" 可以忽略后缀声明，简化为 import "./a" 文件
+    extensions: [".ts", ".tsx", ".vue", ".js", ".json"], // 使用 resolve.extensions 声明自动解析 .ts 后缀文件，这意味着代码如 import "./a.ts" 可以忽略后缀声明，简化为 import "./a" 文件
   },
   module: {
     rules: [
@@ -64,8 +52,6 @@ const baseConfig: webpack.Configuration = {
       template: path.resolve(__dirname, "../index.html"),
       title: "webpack-vue3-ts",
     }),
-    new CleanWebpackPlugin(),
+    new ESLintPlugin(),
   ],
 };
-
-export default baseConfig;

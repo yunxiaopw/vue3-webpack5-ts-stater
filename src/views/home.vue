@@ -1,5 +1,5 @@
 <template>
-  <div>这是home</div>
+  <div>nihao </div>
 </template>
 
 <script setup lang="ts"></script>
